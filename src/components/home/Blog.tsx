@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react'; // Import Lucide React icon
+import Image from 'next/image';
 
 const BlogSection: React.FC = () => {
     return (
@@ -76,7 +77,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ category, date, title, image, descr
             <div className="p-5">
                 <div className="relative">
                     <a href="#" title="" className="block aspect-w-4 aspect-h-3">
-                        <img className="object-cover w-full h-full" src={image} alt="" />
+                        <Image width={400} height={400} className="object-cover w-full h-full" src={image} alt="" />
                     </a>
 
                     <div className="absolute top-4 left-4">

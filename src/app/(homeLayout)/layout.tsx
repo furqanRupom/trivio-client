@@ -1,5 +1,5 @@
-import Footer from '@/components/shared/Footer';
-import Header from '@/components/shared/Header';
+import Footer from '@/components/home/shared/Footer';
+import Header from '@/components/home/shared/Header';
 import * as React from 'react';
 
 interface IHomeLayoutProps {
