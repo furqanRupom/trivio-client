@@ -8,11 +8,11 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
+     colors:{
+        "trivio-50":"#C3D2DA",
+        "trivio-100": "#a5daf9",
+        "trivio-400": "#6b89c5"
+     }
     },
   },
   plugins: [],
