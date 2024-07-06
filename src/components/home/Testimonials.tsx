@@ -13,7 +13,7 @@ const Testimonials: React.FunctionComponent<ITestimonialsProps> = (props) => {
                     <div className="flex flex-col justify-between flex-1 p-8">
                         <div className="flex-1">
                             <blockquote>
-                                <p className="text-lg text-gray-800">“Trivio's General Knowledge quiz is fantastic. I learned so many new things, and the questions were challenging yet fun!”</p>
+                                <p className="text-lg text-gray-800">“Trivio  General Knowledge quiz is fantastic. I learned so many new things  and the questions were challenging yet fun!”</p>
                             </blockquote>
                         </div>
 
@@ -34,7 +34,7 @@ const Testimonials: React.FunctionComponent<ITestimonialsProps> = (props) => {
                     <div className="flex flex-col justify-between flex-1 p-8">
                         <div className="flex-1">
                             <blockquote>
-                                <p className="text-lg text-gray-800">“The Science and Nature quiz on Trivio is a must-try. It was engaging and tested my knowledge thoroughly.”</p>
+                                <p className="text-lg text-gray-800">The Science and Nature quiz on Trivio is a must-try. It was engaging and tested my knowledge thoroughly.</p>
                             </blockquote>
                         </div>
 
@@ -55,7 +55,7 @@ const Testimonials: React.FunctionComponent<ITestimonialsProps> = (props) => {
                     <div className="flex flex-col justify-between flex-1 p-8">
                         <div className="flex-1">
                             <blockquote>
-                                <p className="text-lg text-gray-800">“I had so much fun taking the Pop Culture quiz. Trivio really knows how to keep things interesting and up-to-date!”</p>
+                                <p className="text-lg text-gray-800">I had so much fun taking the Pop Culture quiz. Trivio really knows how to keep things interesting and up-to-date!</p>
                             </blockquote>
                         </div>
 
@@ -76,7 +76,7 @@ const Testimonials: React.FunctionComponent<ITestimonialsProps> = (props) => {
                     <div className="flex flex-col justify-between flex-1 p-8">
                         <div className="flex-1">
                             <blockquote>
-                                <p className="text-lg text-gray-800">“The History quiz on Trivio was both educational and entertaining. I highly recommend it to anyone interested in history.”</p>
+                                <p className="text-lg text-gray-800">The History quiz on Trivio was both educational and entertaining. I highly recommend it to anyone interested in history.</p>
                             </blockquote>
                         </div>
 
@@ -97,7 +97,7 @@ const Testimonials: React.FunctionComponent<ITestimonialsProps> = (props) => {
                     <div className="flex flex-col justify-between flex-1 p-8">
                         <div className="flex-1">
                             <blockquote>
-                                <p className="text-lg text-gray-800">“Trivio's Sports quiz is perfect for any sports fan. The questions are well-crafted and really test your knowledge.”</p>
+                                <p className="text-lg text-gray-800">Trivio Sports quiz is perfect for any sports fan. The questions are well-crafted and really test your knowledge.</p>
                             </blockquote>
                         </div>
 
@@ -118,7 +118,7 @@ const Testimonials: React.FunctionComponent<ITestimonialsProps> = (props) => {
                     <div className="flex flex-col justify-between flex-1 p-8">
                         <div className="flex-1">
                             <blockquote>
-                                <p className="text-lg text-gray-800">“The Geography quiz on Trivio was a great way to test my knowledge and learn more about the world.”</p>
+                                <p className="text-lg text-gray-800">The Geography quiz on Trivio was a great way to test my knowledge and learn more about the world.</p>
                             </blockquote>
                         </div>
 
