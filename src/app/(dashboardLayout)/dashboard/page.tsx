@@ -19,7 +19,7 @@ const mockQuizzes: IQuiz[] = [
 const DashboardPage: React.FunctionComponent = () => {
     return (
         <>
-            <main className=" lg:ml-60 pt-16 max-h-screen overflow-auto">
+            <main className="lg:ml-60 pt-16 max-h-screen overflow-auto">
                 <div className="px-6 py-8">
                     <div className="max-w-4xl mx-auto">
                         <div className="bg-white rounded-3xl p-8 mb-5">
@@ -85,7 +85,7 @@ const DashboardPage: React.FunctionComponent = () => {
                                 <div className="space-y-4">
                                     <div className="p-4 bg-white border rounded-xl text-gray-800 space-y-2">
                                         <div className="text-gray-400 text-xs">2 hours ago</div>
-                                        <div className="font-bold">New quiz "JavaScript Basics" published</div>
+                                        <div className="font-bold">New quiz &quot;JavaScript Basics&quot; published</div>
                                         <div className="text-sm text-gray-600">
                                             <ChevronRight className="text-gray-800 inline align-middle mr-1" />
                                             By John Doe
@@ -93,7 +93,7 @@ const DashboardPage: React.FunctionComponent = () => {
                                     </div>
                                     <div className="p-4 bg-white border rounded-xl text-gray-800 space-y-2">
                                         <div className="text-gray-400 text-xs">1 day ago</div>
-                                        <div className="font-bold">Quiz "React Advanced" saved as draft</div>
+                                        <div className="font-bold">Quiz &quot;React Advanced&quot; saved as draft</div>
                                         <div className="text-sm text-gray-600">
                                             <ChevronRight className="text-gray-800 inline align-middle mr-1" />
                                             By Jane Smith
@@ -101,7 +101,7 @@ const DashboardPage: React.FunctionComponent = () => {
                                     </div>
                                     <div className="p-4 bg-white border rounded-xl text-gray-800 space-y-2">
                                         <div className="text-gray-400 text-xs">3 days ago</div>
-                                        <div className="font-bold">New quiz "CSS Tricks" published</div>
+                                        <div className="font-bold">New quiz &quot;CSS Tricks&quot; published</div>
                                         <div className="text-sm text-gray-600">
                                             <ChevronRight className="text-gray-800 inline align-middle mr-1" />
                                             By Alice Johnson

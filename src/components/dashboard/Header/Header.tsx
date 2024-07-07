@@ -18,7 +18,7 @@ const Header = () => {
                             <span className="text-sm">Archive</span>
                         </button>
                     </div>
-                    <div className="text-lg font-bold">Today's Plan</div>
+                    <div className="text-lg font-bold">Todays Plan</div>
                     <div>
                         <button type="button" className="flex items-center focus:outline-none rounded-lg text-gray-600 hover:text-trivio-400 focus:text-trivio-400 font-semibold p-2 border border-transparent hover:border-trivio-400 focus:border-trivio-400 transition">
                             <span className="text-sm">This week</span>
