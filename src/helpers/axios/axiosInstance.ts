@@ -25,20 +25,20 @@ instance.interceptors.request.use(function (config) {
 // Add a response interceptor
 // @ts-ignore
 instance.interceptors.response.use(function (response) {
-
     const responseObject: { data: any} = {
         
-        data: response?.data,
+        data: response?.data || response,
     }
-    console.log(response)
+  
     return responseObject;
-
+ 
 }, async function (error) {
     const responseErrorObject = {
         statusCode: error?.response?.statusCode || 500,
         message: error?.response?.message || "something went wrong",
         data: error?.response?.result || "something went wrong"
     }
+    console.log(error)
     return responseErrorObject;
 
 });

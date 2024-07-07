@@ -28,14 +28,14 @@ export const axiosBaseQuery =
                     url: baseUrl + url,
                     method,
                     data,
-                    params,
                     headers: {
                         "Content-Type": contentType || "application/json"
                     },
                 })
                 // @ts-ignore
 
-             
+              console.log(result)
+              console.log(method,baseUrl + url)
            
                 return { data: result.data || {} }
             } catch (axiosError) {
