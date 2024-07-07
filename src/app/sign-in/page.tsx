@@ -29,7 +29,7 @@ const SignInPage: React.FunctionComponent<ISignInPageProps> = (props) => {
 
             if (directSignIn?.success) {
                 toast.success('User Login successfully !');
-                localStorage.setItem('authkey',directSignIn?.result?.accessToken)
+                localStorage.setItem('authToken',directSignIn?.result?.accessToken)
                 const user = decodeToken();
                 // @ts-ignore
                 if(user?.role == 'user'){
