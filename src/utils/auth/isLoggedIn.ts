@@ -1,9 +1,8 @@
 import { authKey } from "@/constants/constant";
-import { CloudHail } from "lucide-react";
 
-export const isLoggedIn = () => {
+export const isLoggedIn = (): boolean => {
     if (!authKey || typeof window === 'undefined') {
-        return ""; 
+        return false;
     }
     const token = localStorage.getItem(authKey);
     return !!token;

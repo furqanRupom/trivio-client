@@ -20,7 +20,7 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
 
 
     const user = decodeToken();
-    console.log(user)
+
 
 
     return (
