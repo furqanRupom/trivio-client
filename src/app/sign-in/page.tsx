@@ -27,17 +27,17 @@ const SignInPage: React.FunctionComponent<ISignInPageProps> = (props) => {
                 password: data.password
             }).unwrap();
 
-            if (directSignIn.success) {
+            if (directSignIn?.success) {
                 toast.success('User Login successfully !');
-                setLocalStorage(authKey, directSignIn.result.accessToken);
+                localStorage.setItem('authkey',directSignIn?.result?.accessToken)
                 const user = decodeToken();
                 // @ts-ignore
-                if(user.role == 'user'){
-                    setAccessToken(directSignIn.result.accessToken, {
+                if(user?.role == 'user'){
+                    setAccessToken(directSignIn?.result?.accessToken, {
                         redirect: "/"
                     })
                 }else{
-                    setAccessToken(directSignIn.result.accessToken, {
+                    setAccessToken(directSignIn?.result?.accessToken, {
                         redirect: "/dashboard"
                     })
                 }
