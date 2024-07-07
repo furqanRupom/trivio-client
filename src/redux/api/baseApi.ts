@@ -1,10 +1,11 @@
+import { axiosBaseQuery } from "@/helpers/axios/axiosBaseQuery";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 
 export const baseApi = createApi({
     reducerPath:"baseApi",
-    baseQuery:fetchBaseQuery({
-        baseUrl: "https://localhost:5000"
+    baseQuery:axiosBaseQuery({
+        baseUrl: "http://localhost:8080/api/v1"
     }),
     endpoints:() =>({})
 

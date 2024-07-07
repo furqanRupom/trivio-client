@@ -27,15 +27,17 @@ instance.interceptors.request.use(function (config) {
 instance.interceptors.response.use(function (response) {
 
     const responseObject: { data: any} = {
-        data: response?.data?.data,
+        
+        data: response?.data,
     }
+    console.log(response)
     return responseObject;
 
 }, async function (error) {
     const responseErrorObject = {
-        statusCode: error?.response?.data?.statusCode || 500,
-        message: error?.response?.data?.message || "something went wrong",
-        data: error?.response?.data?.data || "something went wrong"
+        statusCode: error?.response?.statusCode || 500,
+        message: error?.response?.message || "something went wrong",
+        data: error?.response?.result || "something went wrong"
     }
     return responseErrorObject;
 

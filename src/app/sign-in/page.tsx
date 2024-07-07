@@ -1,11 +1,43 @@
+"use client";
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import { setLocalStorage } from '@/localStorage';
+import { setAccessToken } from '@/services/actions/setAccessToken';
+import { authKey } from '@/constants/constant';
+import { useSignInMutation } from '@/redux/api/authApi';
 
 interface ISignInPageProps {
 }
-
+interface IRegisterDataProps {
+    email:string;
+    password:string;
+}
 const SignInPage: React.FunctionComponent<ISignInPageProps> = (props) => {
+    const {register,handleSubmit} = useForm<IRegisterDataProps>()
+    const [getSignIn] = useSignInMutation();
+    const handleSignUp = async(data:IRegisterDataProps) => {
+
+        try {
+            const directSignIn = await getSignIn({
+                email: data.email,
+                password: data.password
+            }).unwrap();
+
+            if (directSignIn.success) {
+                toast.success('User Login successfully !');
+                setLocalStorage(authKey, directSignIn.result.accessToken);
+                setAccessToken(directSignIn.result.accessToken, {
+                    redirect: "/dashboard"
+                })
+            }
+        } catch (error:any) {
+            toast.success(error.message)
+        }
+       
+    }
     return <>
         <section className="bg-white">
             <div className="grid grid-cols-1  lg:grid-cols-2 max-w-5xl mx-auto min-h-screen">
@@ -19,7 +51,7 @@ const SignInPage: React.FunctionComponent<ISignInPageProps> = (props) => {
                             </Link>
                         </p>
 
-                        <form action="#" method="POST" className="mt-8">
+                        <form onSubmit={handleSubmit(handleSignUp)} className="mt-8">
                             <div className="space-y-5">
                                 <div>
                                     <label htmlFor="email" className="text-base font-medium text-gray-900">
@@ -27,8 +59,10 @@ const SignInPage: React.FunctionComponent<ISignInPageProps> = (props) => {
                                     </label>
                                     <div className="mt-2.5">
                                         <input
+                                        {...register('email')}
                                             type="email"
                                             id="email"
+                                            required
                                             placeholder="Enter email to get started"
                                             className="block w-full p-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-trivio-400 focus:bg-white caret-trivio-400"
                                         />
@@ -47,8 +81,10 @@ const SignInPage: React.FunctionComponent<ISignInPageProps> = (props) => {
                                     </div>
                                     <div className="mt-2.5">
                                         <input
+                                            {...register('password')}
                                             type="password"
                                             id="password"
+                                            required
                                             placeholder="Enter your password"
                                             className="block w-full p-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-trivio-400 focus:bg-white caret-trivio-400"
                                         />
