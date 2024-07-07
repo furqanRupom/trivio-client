@@ -19,7 +19,7 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
     };
 
 
-    const user = decodeToken();
+   
 
 
 
@@ -40,16 +40,13 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
                             >
                                 Home
                             </Link>
-                            {
-                                // @ts-ignore
-                                user?.role === 'admin' && <Link
+                            <Link
                                     href="/dashboard"
                                     title=""
                                     className="text-lg  text-zinc-700 hover:text-trivio-400 hover:bg-trivio-50  p-2 hover:bg-opacity-10 rounded-xl transition-all duration-200 hover:text-opacity-80"
                                 >
                                     dashboard
                                 </Link>
-                            }
                             <Link
                                 href="/about"
                                 title=""
@@ -81,23 +78,14 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
                         {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                     </button>
                  
-                    {
-                        !user && <Link href="/sign-up"
+                  <Link href="/sign-up"
                             className="hidden lg:inline-block items-center justify-center px-7 py-2 text-lg transition-all duration-200 hover:bg-trivio-50 hover:text-trivio-400 focus:text-black focus:bg-trivio-400 font-bold  text-white  bg-trivio-400 rounded-xl"
                             role="button"
                         >
                             Sign Up
                         </Link>
-                    }
 
-                    {
-                        user && <button onClick={()=> logoutUser(router)}
-                            className="hidden lg:inline-block items-center justify-center px-7 py-2 text-lg transition-all duration-200 hover:bg-trivio-50 hover:text-trivio-400 focus:text-black focus:bg-trivio-400 font-bold  text-white  bg-trivio-400 rounded-xl"
-                            role="button"
-                        >
-                            Logout
-                        </button>
-                    }
+                 
                 </div>
             </div>
             {isMenuOpen && (
@@ -117,7 +105,7 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
                         </Link>
                         {
                             // @ts-ignore
-                            user?.role === 'admin' && <Link
+                           isLoggedIn && <Link
                                 href="/dashboard"
                                 title=""
                                 className="text-lg  text-zinc-700 hover:text-trivio-400 hover:bg-trivio-50  p-2 hover:bg-opacity-10 rounded-xl transition-all duration-200 hover:text-opacity-80"
@@ -146,24 +134,14 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
                         >
                             Help
                         </Link>
-                        {
-                            // @ts-ignore
-                            !user?.email && <Link href="/sign-up"
+                         <Link href="/sign-up"
                                 className="hidden lg:inline-block items-center justify-center px-7 py-2 text-lg transition-all duration-200 hover:bg-trivio-50 hover:text-trivio-400 focus:text-black focus:bg-trivio-400 font-bold  text-white  bg-trivio-400 rounded-xl"
                                 role="button"
                             >
                                 Sign Up
                             </Link>
-                        }
 
-                        {
-                            user && <button onClick={() => logoutUser(router)}
-                                className="hidden lg:inline-block items-center justify-center px-7 py-2 text-lg transition-all duration-200 hover:bg-trivio-50 hover:text-trivio-400 focus:text-black focus:bg-trivio-400 font-bold  text-white  bg-trivio-400 rounded-xl"
-                                role="button"
-                            >
-                                Logout
-                            </button>
-                        }
+                   
                     </div>
                 </motion.div>
             )}
