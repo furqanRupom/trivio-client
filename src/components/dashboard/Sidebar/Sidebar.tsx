@@ -1,10 +1,13 @@
 "use client";
+import { logoutUser } from '@/utils/auth/logoutUser';
 import { Home, Archive, List, Tag, LogOut, Menu, X } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
 const Sidebar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const router = useRouter();
 
     const toggleSidebar = () => {
         setIsOpen(!isOpen);
@@ -54,7 +57,7 @@ const Sidebar = () => {
                         </div>
                     </div>
                     <div className="p-4">
-                        <button type="button" className="inline-flex items-center justify-center h-9 px-4 rounded-xl bg-trivio-400 text-gray-300 hover:text-white text-sm font-semibold transition">
+                        <button onClick={()=> logoutUser(router)} type="button" className="inline-flex items-center justify-center h-9 px-4 rounded-xl bg-trivio-400 text-gray-300 hover:text-white text-sm font-semibold transition">
                             <LogOut />
                         </button>
                     </div>

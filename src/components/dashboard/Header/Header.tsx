@@ -1,7 +1,13 @@
+import { authKey } from '@/constants/constant';
+import { getLocalStorage } from '@/localStorage';
+import { isLoggedIn } from '@/utils/auth/isLoggedIn';
+import { decodeToken } from '@/utils/auth/jwtDecode';
+import { jwtDecode } from 'jwt-decode';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import React from 'react';
 
 const Header = () => {
+      
     return (
         <header className="fixed right-0 top-0 left-0 lg:left-60 bg-trivio-40 py-5 px-4 h-16 bg-white">
             <div className="max-w-4xl mx-auto ">

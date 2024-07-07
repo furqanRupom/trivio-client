@@ -11,6 +11,7 @@ const config: Config = {
      colors:{
         "trivio-50":"#C3D2DA",
         "trivio-100": "#a5daf9",
+        "trivio-200":"#C4D0E8",
         "trivio-400": "#6b89c5"
      }
     },

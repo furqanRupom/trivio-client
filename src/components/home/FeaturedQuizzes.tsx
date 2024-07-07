@@ -3,6 +3,7 @@ import { FC } from "react";
 import { motion } from "framer-motion";
 import { ShieldCheck, Globe, Book, Film, Music, Trophy, CloudLightning, FlaskConical, Shapes } from "lucide-react";
 import { useFetchedQuizzesQuery } from "@/redux/api/quizzesApi";
+import Link from "next/link";
 
 interface Quiz {
     icon: JSX.Element;
@@ -100,9 +101,11 @@ const FeaturedQuizzes: FC = () => {
                             </div>
                             <h3 className="mt-8 text-xl font-semibold text-zinc-700">{quiz.subject}</h3>
                             <p className="mt-4 text-base text-zinc-600">{quiz.description}</p>
-                            <button className="mt-4 px-4 py-2 bg-trivio-400 text-white rounded hover:bg-trivio-100 hover:text-trivio-400 hover:bg-opacity-20 transition">
-                                Participate
-                            </button>
+                         <div className="pt-5">
+                                <Link href={`/participate/${quiz._id}`} className="mt-4 px-4 py-2 bg-trivio-400 text-white rounded hover:bg-trivio-100 hover:text-trivio-400 hover:bg-opacity-20 transition">
+                                    Participate
+                                </Link>
+                         </div>
                         </motion.div>
                     ))}
                 </div>

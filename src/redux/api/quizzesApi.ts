@@ -31,9 +31,18 @@ const quizzesApi = baseApi.injectEndpoints({
                 url: "/quizzes",
                 method: "GET",
             })
+        }),
+        getSingleQuizzes: build.query({
+            query: (args) => {
+              console.log(args.id)
+                return {
+                    url: `/quizzes/${args.id}`,
+                    method: "GET",
+                }
+            }
         })
     })
 })
 
 
-export const { useCreateQuizzesMutation,useUpdateQuizMutation,useDeleteQuizMutation,useFetchedQuizzesQuery } = quizzesApi
+export const { useCreateQuizzesMutation,useUpdateQuizMutation,useDeleteQuizMutation,useFetchedQuizzesQuery,useGetSingleQuizzesQuery } = quizzesApi

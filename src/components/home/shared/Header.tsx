@@ -3,20 +3,30 @@ import * as React from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
+import { decodeToken } from '@/utils/auth/jwtDecode';
+import { logoutUser } from '@/utils/auth/logoutUser';
+import { useRouter } from 'next/navigation';
+import { isLoggedIn } from '@/utils/auth/isLoggedIn';
 
 interface IHeaderProps { }
 
 const Header: React.FunctionComponent<IHeaderProps> = (props) => {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+    const router = useRouter();
 
     const toggleMenu = () => {
         setIsMenuOpen((prev) => !prev);
     };
 
+
+    const user = decodeToken();
+    console.log(user)
+
+
     return (
         <motion.header initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}  className="bg-white max-w-7xl mx-auto py-3 sticky z-50 top-0 w-full ">
+            transition={{ duration: 0.5 }}  className="bg-white max-w-7xl mx-auto py-3 sticky z-30 top-0 w-full ">
             <div className="px-4 mx-auto sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16 lg:h-20">
                     <div className="flex-shrink-0 flex space-x-3 items-center">
@@ -30,6 +40,16 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
                             >
                                 Home
                             </Link>
+                            {
+                                // @ts-ignore
+                                user?.role === 'admin' && <Link
+                                    href="/dashboard"
+                                    title=""
+                                    className="text-lg  text-zinc-700 hover:text-trivio-400 hover:bg-trivio-50  p-2 hover:bg-opacity-10 rounded-xl transition-all duration-200 hover:text-opacity-80"
+                                >
+                                    dashboard
+                                </Link>
+                            }
                             <Link
                                 href="/about"
                                 title=""
@@ -61,12 +81,23 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
                         {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                     </button>
                  
-                    <Link href="/sign-up"
-                        className="hidden lg:inline-block items-center justify-center px-7 py-2 text-lg transition-all duration-200 hover:bg-trivio-50 hover:text-trivio-400 focus:text-black focus:bg-trivio-400 font-bold  text-white  bg-trivio-400 rounded-xl"
-                        role="button"
-                    >
-                        Sign Up
-                    </Link>
+                    {
+                        !user && <Link href="/sign-up"
+                            className="hidden lg:inline-block items-center justify-center px-7 py-2 text-lg transition-all duration-200 hover:bg-trivio-50 hover:text-trivio-400 focus:text-black focus:bg-trivio-400 font-bold  text-white  bg-trivio-400 rounded-xl"
+                            role="button"
+                        >
+                            Sign Up
+                        </Link>
+                    }
+
+                    {
+                        user && <button onClick={()=> logoutUser(router)}
+                            className="hidden lg:inline-block items-center justify-center px-7 py-2 text-lg transition-all duration-200 hover:bg-trivio-50 hover:text-trivio-400 focus:text-black focus:bg-trivio-400 font-bold  text-white  bg-trivio-400 rounded-xl"
+                            role="button"
+                        >
+                            Logout
+                        </button>
+                    }
                 </div>
             </div>
             {isMenuOpen && (
@@ -84,6 +115,16 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
                         >
                             Home
                         </Link>
+                        {
+                            // @ts-ignore
+                            user?.role === 'admin' && <Link
+                                href="/dashboard"
+                                title=""
+                                className="text-lg  text-zinc-700 hover:text-trivio-400 hover:bg-trivio-50  p-2 hover:bg-opacity-10 rounded-xl transition-all duration-200 hover:text-opacity-80"
+                            >
+                                dashboard
+                            </Link>
+                        }
                         <Link
                             href="/about"
                             title=""
@@ -105,12 +146,24 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
                         >
                             Help
                         </Link>
-                        <Link href="/sign-up"
-                            className="inline-flex  items-center justify-center px-7 py-2 text-lg transition-all duration-200 hover:bg-trivio-50 hover:text-trivio-400 focus:text-black focus:bg-trivio-400 font-bold  text-white  bg-trivio-400 rounded-xl"
-                            role="button"
-                        >
-                        Sign Up
-                        </Link>
+                        {
+                            // @ts-ignore
+                            !user?.email && <Link href="/sign-up"
+                                className="hidden lg:inline-block items-center justify-center px-7 py-2 text-lg transition-all duration-200 hover:bg-trivio-50 hover:text-trivio-400 focus:text-black focus:bg-trivio-400 font-bold  text-white  bg-trivio-400 rounded-xl"
+                                role="button"
+                            >
+                                Sign Up
+                            </Link>
+                        }
+
+                        {
+                            user && <button onClick={() => logoutUser(router)}
+                                className="hidden lg:inline-block items-center justify-center px-7 py-2 text-lg transition-all duration-200 hover:bg-trivio-50 hover:text-trivio-400 focus:text-black focus:bg-trivio-400 font-bold  text-white  bg-trivio-400 rounded-xl"
+                                role="button"
+                            >
+                                Logout
+                            </button>
+                        }
                     </div>
                 </motion.div>
             )}

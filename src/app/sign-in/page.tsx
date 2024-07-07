@@ -8,6 +8,7 @@ import { setLocalStorage } from '@/localStorage';
 import { setAccessToken } from '@/services/actions/setAccessToken';
 import { authKey } from '@/constants/constant';
 import { useSignInMutation } from '@/redux/api/authApi';
+import { decodeToken } from '@/utils/auth/jwtDecode';
 
 interface ISignInPageProps {
 }
@@ -29,9 +30,18 @@ const SignInPage: React.FunctionComponent<ISignInPageProps> = (props) => {
             if (directSignIn.success) {
                 toast.success('User Login successfully !');
                 setLocalStorage(authKey, directSignIn.result.accessToken);
-                setAccessToken(directSignIn.result.accessToken, {
-                    redirect: "/dashboard"
-                })
+                const user = decodeToken();
+                // @ts-ignore
+                if(user.role == 'user'){
+                    setAccessToken(directSignIn.result.accessToken, {
+                        redirect: "/"
+                    })
+                }else{
+                    setAccessToken(directSignIn.result.accessToken, {
+                        redirect: "/dashboard"
+                    })
+                }
+               
             }
         } catch (error:any) {
             toast.success(error.message)
