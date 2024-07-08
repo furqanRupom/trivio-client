@@ -20,10 +20,9 @@ const quizzesApi = baseApi.injectEndpoints({
             })
         }),
         deleteQuiz: build.mutation({
-            query: (data) => ({
-                url: "/admin/delete-quiz",
+            query: (args) => ({
+                url: `/admin/delete-quiz/${args.id}`,
                 method: "DELETE",
-                data: data
             })
         }),
         fetchedQuizzes: build.query({
@@ -34,7 +33,6 @@ const quizzesApi = baseApi.injectEndpoints({
         }),
         getSingleQuizzes: build.query({
             query: (args) => {
-              console.log(args.id)
                 return {
                     url: `/quizzes/${args.id}`,
                     method: "GET",
